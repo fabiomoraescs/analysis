@@ -1,0 +1,610 @@
+/*
+ * ANÁLISYS — IDENTIDADE VISUAL DO SITE INSTITUCIONAL
+ *
+ * Guia para edição manual:
+ * - Cores, fundos e bordas: edite as variáveis de :root.
+ * - Tamanhos e espaçamentos: procure a seção correspondente abaixo.
+ * - Layout mobile: veja as regras @media ao final.
+ * - Não é necessário modificar os arquivos HTML para alterar cores.
+ */
+
+
+/* 01 — CORES E VARIÁVEIS: edite aqui para personalizar a identidade visual */
+:root {
+    color-scheme: dark;
+    --bg: #0a121a;
+    --surface: #111f2a;
+    --surface-2: #142735;
+    --line: #28414d;
+    --text: #eff8fa;
+    --soft: #bbced5;
+    --muted: #94abb7;
+    --cyan: #8ad9ee;
+    --mint: #76e5c3;
+    --radius: 17px;
+}
+
+
+/* 02 — CONFIGURAÇÕES GERAIS, TIPOGRAFIA E ACESSIBILIDADE */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+a {
+    color: var(--cyan);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: #b9eeff;
+}
+
+button {
+    font: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--mint);
+    outline-offset: 4px;
+}
+
+.skip {
+    position: absolute;
+    left: -9999px;
+    top: 4px;
+    z-index: 10;
+    background: white;
+    color: #111;
+    padding: 10px;
+}
+
+.skip:focus {
+    left: 15px;
+}
+
+
+/* 03 — CONTAINER CENTRAL E CABEÇALHO */
+.shell {
+    width: min(1120px,calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(10,18,26,.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--line);
+}
+
+.head-inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: -.055em;
+    font-size: 23px;
+}
+
+.brand-mark {
+    width: 31px;
+    height: 31px;
+    border: 2px solid var(--mint);
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    color: var(--mint);
+    font-size: 16px;
+    transform: rotate(-8deg);
+}
+
+.nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav a {
+    color: var(--soft);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav a:hover,.nav a[aria-current=page] {
+    color: var(--mint);
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 6px 12px;
+}
+
+main {
+    min-height: 62vh;
+}
+
+.eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--mint);
+}
+
+
+/* 04 — BANNER DA PÁGINA INICIAL */
+.hero {
+    position: relative;
+    padding: 90px 0 76px;
+    overflow: hidden;
+    background: radial-gradient(circle at 82% 30%,rgba(47,125,137,.16),transparent 41%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 56px;
+    align-items: center;
+}
+
+h1,h2,h3,p {
+    margin-top: 0;
+}
+
+h1,h2,h3 {
+    letter-spacing: -.035em;
+    line-height: 1.18;
+}
+
+h1 {
+    font-size: clamp(2.35rem,4.8vw,4.2rem);
+    max-width: 780px;
+    margin: 16px 0 22px;
+}
+
+h2 {
+    font-size: clamp(1.65rem,3vw,2.35rem);
+    margin: 12px 0 20px;
+}
+
+h3 {
+    font-size: 1.16rem;
+    margin-bottom: 12px;
+}
+
+.lead {
+    font-size: 1.11rem;
+    color: var(--soft);
+    max-width: 680px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: 14px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 17px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 750;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.btn-main {
+    background: var(--mint);
+    color: #07202a;
+}
+
+.btn-main:hover {
+    background: #b2f2dc;
+    color: #07202a;
+}
+
+.btn-alt {
+    color: var(--text);
+    border-color: #49717c;
+    background: #162a35;
+}
+
+.btn-alt:hover {
+    color: #fff;
+    border-color: var(--mint);
+}
+
+.visual {
+    border: 1px solid #35505c;
+    border-radius: 19px;
+    background: linear-gradient(145deg,#1b3945,#0e1b26);
+    padding: 17px;
+    box-shadow: 0 28px 80px #0004;
+}
+
+.visual-bar {
+    display: flex;
+    gap: 6px;
+    padding: 4px 0 15px;
+    border-bottom: 1px solid #375563;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #698e9e;
+}
+
+.dot:first-child {
+    background: #7de1c1;
+}
+
+.dot:nth-child(2) {
+    background: #f2cd8b;
+}
+
+.visual-title {
+    margin: 18px 0 13px;
+    color: #deeff3;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 9px;
+}
+
+.mini {
+    background: #112733;
+    border: 1px solid #345262;
+    border-radius: 10px;
+    padding: 12px 9px;
+    font-size: 10px;
+    color: #b3d1d9;
+}
+
+.mini strong {
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.chart {
+    display: flex;
+    align-items: end;
+    gap: 9px;
+    padding: 20px 0 0;
+    height: 140px;
+    border-bottom: 1px solid #345262;
+}
+
+.chart span {
+    flex: 1;
+    background: linear-gradient(var(--cyan),#286376);
+    border-radius: 4px 4px 0 0;
+    opacity: .85;
+}
+
+.visual-foot {
+    font-size: 11px;
+    color: #91b6c4;
+    margin-top: 14px;
+}
+
+
+/* 05 — SEÇÕES, CARDS E FERRAMENTAS */
+.section {
+    padding: 74px 0;
+    border-top: 1px solid rgba(90,127,140,.14);
+}
+
+.section-head {
+    max-width: 710px;
+    margin-bottom: 33px;
+}
+
+.section-head p {
+    color: var(--soft);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 16px;
+}
+
+.grid.two {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+.card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 25px;
+    background: var(--surface);
+}
+
+.card p {
+    color: var(--soft);
+    margin: 0;
+}
+
+.card .overline {
+    font-size: 12px;
+    color: var(--mint);
+    font-weight: 800;
+    letter-spacing: .06em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 17px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.status {
+    display: inline-block;
+    border: 1px solid #43616b;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #bcd2d8;
+    padding: 2px 9px;
+    margin-top: 16px;
+}
+
+.status.ready {
+    color: var(--mint);
+    border-color: #427b70;
+}
+
+.band {
+    padding: 35px;
+    border: 1px solid #42616b;
+    background: linear-gradient(120deg,#183541,#10222c);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+.band h2 {
+    font-size: 1.75rem;
+    margin-bottom: 9px;
+}
+
+.band p {
+    color: var(--soft);
+    margin: 0;
+}
+
+
+/* 06 — DOCUMENTOS, PÁGINAS DE TEXTO E POLÍTICAS */
+.prose {
+    max-width: 770px;
+    margin: 0 auto;
+    padding: 56px 0 80px;
+}
+
+.prose h1 {
+    font-size: clamp(2rem,4vw,3rem);
+}
+
+.prose h2 {
+    font-size: 1.48rem;
+    margin: 36px 0 14px;
+}
+
+.prose h3 {
+    font-size: 1.12rem;
+    margin: 22px 0 8px;
+}
+
+.prose p,.prose li {
+    color: var(--soft);
+}
+
+.prose ul,.prose ol {
+    padding-left: 24px;
+}
+
+.prose li {
+    padding-bottom: 5px;
+}
+
+.notice {
+    background: #263221;
+    border-left: 4px solid #e4c582;
+    padding: 15px 18px;
+    border-radius: 5px;
+    margin: 28px 0;
+    color: #f3e5b6;
+}
+
+.notice strong {
+    color: white;
+}
+
+.faq details {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 17px 20px;
+    background: var(--surface);
+    margin-bottom: 10px;
+}
+
+.faq summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.faq details p {
+    margin: 14px 0 0;
+    color: var(--soft);
+}
+
+
+/* 07 — RODAPÉ E LINKS INSTITUCIONAIS */
+.footer {
+    border-top: 1px solid var(--line);
+    background: #0d1a23;
+    padding: 42px 0 25px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 14px 23px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.footer-nav a {
+    font-size: 13px;
+    color: var(--soft);
+}
+
+.copyright {
+    border-top: 1px solid #233743;
+    color: var(--muted);
+    font-size: 12px;
+    padding-top: 20px;
+    margin-top: 28px;
+}
+
+
+/* 08 — BLOG */
+.post-meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.link-arrow {
+    font-weight: 750;
+}
+
+
+/* 09 — RESPONSIVIDADE (CELULARES) E ACESSIBILIDADE */
+@media (max-width:790px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .hero {
+        padding: 57px 0;
+    }
+
+    .grid,.grid.two {
+        grid-template-columns: 1fr;
+    }
+
+    .band {
+        display: block;
+    }
+
+    .band .btn {
+        margin-top: 20px;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 17px 22px;
+        background: #0c1b24;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .nav[data-open=true] {
+        display: flex;
+    }
+
+    .footer-inner {
+        display: block;
+    }
+
+    .footer-nav {
+        margin-top: 25px;
+    }
+
+    .visual {
+        max-width: 500px;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+}
